@@ -1,5 +1,5 @@
 import { Menu as MenuIcon } from "@mui/icons-material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -9,16 +9,16 @@ import {
   Typography,
 } from "@mui/material";
 import cache from "../../utils/cache";
+import { LOG_IN } from "../../constants";
 
 const Header = () => {
+  let navigate = useNavigate();
+  const isAuth = Boolean(cache.getItem(LOG_IN));
   const linksStyles = { color: "white", textDecoration: "none" };
-  const isAuth = Boolean(cache.getItem("login"));
-  // console.log(isAuth);
-
-  const handleLogin = () => {};
 
   const handleLogOut = () => {
     cache.removeAll();
+    navigate("/login");
   };
 
   return (
@@ -39,7 +39,7 @@ const Header = () => {
               News
             </Typography>
             <NavLink to={"/"} style={linksStyles}>
-              Users
+              User
             </NavLink>
             <NavLink to={"/todos"} style={linksStyles}>
               To do
@@ -50,7 +50,7 @@ const Header = () => {
                 {"Logout"}
               </Button>
             ) : (
-              <Button color="inherit" onClick={handleLogin}>
+              <Button color="inherit" onClick={() => navigate("/login")}>
                 {"Login"}
               </Button>
             )}
