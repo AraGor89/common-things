@@ -14,6 +14,7 @@ import { LOG_IN } from "../../constants";
 const Header = () => {
   let navigate = useNavigate();
   const isAuth = Boolean(cache.getItem(LOG_IN));
+  const user = cache.getItem(LOG_IN).login;
   const linksStyles = { color: "white", textDecoration: "none" };
 
   const handleLogOut = () => {
@@ -23,9 +24,9 @@ const Header = () => {
 
   return (
     <Typography component="div">
-      <Box sx={{ flexGrow: 1 }}>
+      <Box>
         <AppBar position="static">
-          <Toolbar>
+          <Toolbar sx={{ display: "flex" }}>
             <IconButton
               size="large"
               edge="start"
@@ -35,20 +36,27 @@ const Header = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h6" component="div" marginRight={2}>
               News
             </Typography>
-            <NavLink to={"/"} style={linksStyles}>
-              User
-            </NavLink>
-            <NavLink to={"/todos"} style={linksStyles}>
-              To do
-            </NavLink>
+            <Typography variant="h6" component="div" marginRight={2}>
+              <NavLink to={"/"} style={linksStyles}>
+                User
+              </NavLink>
+            </Typography>
+            <Typography variant="h6" component="div" flexGrow={1}>
+              <NavLink to={"/todos"} style={linksStyles}>
+                To do
+              </NavLink>
+            </Typography>
 
             {isAuth ? (
-              <Button color="inherit" onClick={handleLogOut}>
-                {"Logout"}
-              </Button>
+              <>
+                <Typography variant="h6">{user}</Typography>
+                <Button color="inherit" onClick={handleLogOut}>
+                  {"Logout"}
+                </Button>
+              </>
             ) : (
               <Button color="inherit" onClick={() => navigate("/login")}>
                 {"Login"}
