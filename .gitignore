@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# google
+secrets.json
+
 # testing
 /coverage
 

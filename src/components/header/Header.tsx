@@ -44,6 +44,11 @@ const Header = () => {
                 User
               </NavLink>
             </Typography>
+            <Typography variant="h6" component="div" marginRight={2}>
+              <NavLink to={"/alias"} style={linksStyles}>
+                Alias
+              </NavLink>
+            </Typography>
             <Typography variant="h6" component="div" flexGrow={1}>
               <NavLink to={"/todos"} style={linksStyles}>
                 To do

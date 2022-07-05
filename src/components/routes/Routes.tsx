@@ -11,6 +11,7 @@ import cache from "../../utils/cache";
 import { LOG_IN } from "../../constants";
 import RegistrationForm from "../registrationForm/RegistrationForm";
 import Todo from "./../todo/Todo";
+import Alias from "../alias/Alias";
 
 const Routes: FC = () => {
   const { pathname } = useLocation();
@@ -20,6 +21,7 @@ const Routes: FC = () => {
 
   const routes: IRoute[] = [
     { path: "/", element: <div>User</div>, exact: true },
+    { path: "/alias", element: <Alias />, exact: true },
     { path: "/todos", element: <Todo />, exact: true },
     { path: "/login", element: <RegistrationForm />, exact: true },
     { path: "/signin", element: <RegistrationForm />, exact: true },

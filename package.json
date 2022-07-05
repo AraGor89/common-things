@@ -8,17 +8,23 @@
     "@hookform/resolvers": "^2.9.0",
     "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.8.2",
+    "@mui/styles": "^5.8.3",
     "@mui/types": "^7.1.3",
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/axios": "^0.14.0",
     "@types/jest": "^27.5.1",
-    "@types/node": "^16.11.38",
+    "@types/lodash": "^4.14.182",
     "@types/react": "^18.0.10",
     "@types/react-dom": "^18.0.5",
     "@types/uuid": "^8.3.4",
     "@types/yup": "^0.29.14",
+    "axios": "^0.27.2",
+    "env-cmd": "^10.1.0",
+    "googleapis": "^103.0.0",
+    "lodash": "^4.17.21",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.31.3",
@@ -26,14 +32,16 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.7.2",
+    "use-google-sheets": "^1.3.0",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:dev": "env-cmd -f .env.development.local react-scripts start",
+    "start:prod": "env-cmd -f .env.production.local react-scripts start",
+    "test": "cypress open",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -53,5 +61,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^10.2.0"
   }
 }
