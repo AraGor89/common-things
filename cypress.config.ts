@@ -1,14 +1,13 @@
 import { defineConfig } from "cypress";
 
 // load the environment variables from the local .env file
-require("dotenv").config();
+require("dotenv").config({ path: "./.env.test.local" });
 
 export default defineConfig({
-  env: {
-    "my-var": "ok",
-  },
+  env: {},
   e2e: {
     baseUrl: "http://localhost:3000",
+    // baseUrl: "https://example.cypress.io",
     excludeSpecPattern: "**/examples/*.cy.js",
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -22,9 +21,10 @@ export default defineConfig({
         process.env.REACT_APP_GOOGLE_API_KEY;
       config.env.REACT_APP_GOOGLE_SHEETS_ID =
         process.env.REACT_APP_GOOGLE_SHEETS_ID;
+      config.env.REACT_APP_GOOGLE_SHEETS_API_URL =
+        process.env.REACT_APP_GOOGLE_SHEETS_API_URL;
+      config.env.NODE_ENV = process.env.NODE_ENV; //????????
       config.env.TEST_ENV = process.env.REACT_APP_TEST_ENV;
-
-      console.log("extended config.env with process.env.{FOO, BAR, USER_NAME}");
 
       return config;
     },
