@@ -101,6 +101,7 @@ const Login = () => {
               render={({ field: { onChange, value } }) => (
                 <TextField
                   //   onChange={onChange}
+                  data-cy={name}
                   label={label}
                   error={!!errors[name as keyof IFormFields]?.message}
                   helperText={errors[name as keyof IFormFields]?.message}
@@ -117,6 +118,7 @@ const Login = () => {
         <input type="submit" ref={inputRef} style={{ display: "none" }} />
         <Button
           fullWidth
+          data-cy={"Submit"}
           variant="contained"
           sx={{ marginTop: "20px" }}
           onClick={handleRefSubmit}

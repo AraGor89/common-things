@@ -58,7 +58,11 @@ const Header = () => {
             {isAuth ? (
               <>
                 <Typography variant="h6">{user}</Typography>
-                <Button color="inherit" onClick={handleLogOut}>
+                <Button
+                  color="inherit"
+                  onClick={handleLogOut}
+                  data-cy={"logout"}
+                >
                   {"Logout"}
                 </Button>
               </>
