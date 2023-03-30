@@ -36,14 +36,14 @@ const Header = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" component="div" marginRight={2}>
+            {/* <Typography variant="h6" component="div" marginRight={2}>
               News
             </Typography>
             <Typography variant="h6" component="div" marginRight={2}>
               <NavLink to={"/"} style={linksStyles}>
                 User
               </NavLink>
-            </Typography>
+            </Typography> */}
             <Typography variant="h6" component="div" marginRight={2}>
               <NavLink to={"/alias"} style={linksStyles}>
                 Alias
@@ -57,17 +57,24 @@ const Header = () => {
 
             {isAuth ? (
               <>
-                <Typography variant="h6">{user}</Typography>
+                <Typography variant="h6" marginRight={2}>
+                  {user}
+                </Typography>
                 <Button
                   color="inherit"
                   onClick={handleLogOut}
                   data-cy={"logout"}
+                  variant="outlined"
                 >
                   {"Logout"}
                 </Button>
               </>
             ) : (
-              <Button color="inherit" onClick={() => navigate("/login")}>
+              <Button
+                color="inherit"
+                variant="outlined"
+                onClick={() => navigate("/login")}
+              >
                 {"Login"}
               </Button>
             )}

@@ -56,7 +56,7 @@ const Login = () => {
         } else {
           cache.setItem(LOG_IN, data);
           setGeneralError("");
-          navigate("/");
+          navigate("/alias");
           return;
         }
       }
