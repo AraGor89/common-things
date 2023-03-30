@@ -12,6 +12,7 @@ import { LOG_IN } from "../../constants";
 import RegistrationForm from "../registrationForm/RegistrationForm";
 import Todo from "./../todo/Todo";
 import Alias from "../alias/Alias";
+import User from "../user/user";
 
 const Routes: FC = () => {
   const { pathname } = useLocation();
@@ -20,7 +21,7 @@ const Routes: FC = () => {
   const shouldBeRedirected = !isAuth && !isRegistrationPage;
 
   const routes: IRoute[] = [
-    { path: "/", element: <div>User</div>, exact: true },
+    { path: "/", element: <User />, exact: true },
     { path: "/alias", element: <Alias />, exact: true },
     { path: "/todos", element: <Todo />, exact: true },
     { path: "/login", element: <RegistrationForm />, exact: true },

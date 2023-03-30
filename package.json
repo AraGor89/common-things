@@ -1,5 +1,6 @@
 {
   "name": "common-things",
+  "homepage": "https://AraGor89.github.io/common-things/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -40,6 +41,8 @@
     "yup": "^0.32.11"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start:dev": "env-cmd -f .env.development.local react-scripts start",
     "start:prod": "env-cmd -f .env.production.local react-scripts start",
     "test": "cypress open",
@@ -67,6 +70,7 @@
   "devDependencies": {
     "cypress": "^10.2.0",
     "cypress-dotenv-flow": "^1.2.2",
-    "dotenv-flow": "^3.2.0"
+    "dotenv-flow": "^3.2.0",
+    "gh-pages": "^5.0.0"
   }
 }

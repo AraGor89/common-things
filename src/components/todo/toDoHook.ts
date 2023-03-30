@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, KeyboardEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import cache from "../../utils/cache";
@@ -28,6 +28,12 @@ const useToDo = () => {
       ];
       setDoings(upDated);
       setNewDoing("");
+    }
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<any>) => {
+    if (e.key === "Enter") {
+      handleAdd();
     }
   };
 
@@ -94,6 +100,7 @@ const useToDo = () => {
     setNewDoing,
     handleDelete,
     handleSelect,
+    handleKeyDown,
     setIsFiltered,
     isIncludeSearch,
     setSearchFilter,

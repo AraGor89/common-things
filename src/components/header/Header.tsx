@@ -1,5 +1,5 @@
 import { Menu as MenuIcon } from "@mui/icons-material";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -13,9 +13,14 @@ import { LOG_IN } from "../../constants";
 
 const Header = () => {
   let navigate = useNavigate();
+  let { pathname } = useLocation();
   const isAuth = Boolean(cache.getItem(LOG_IN));
   const user = cache.getItem(LOG_IN).login;
-  const linksStyles = { color: "white", textDecoration: "none" };
+
+  const linkStyles = (name: string) => ({
+    textDecoration: "none",
+    color: pathname.includes(name) ? "yellow" : "white",
+  });
 
   const handleLogOut = () => {
     cache.removeAll();
@@ -28,6 +33,7 @@ const Header = () => {
         <AppBar position="static">
           <Toolbar sx={{ display: "flex" }}>
             <IconButton
+              disabled
               size="large"
               edge="start"
               color="inherit"
@@ -45,12 +51,12 @@ const Header = () => {
               </NavLink>
             </Typography> */}
             <Typography variant="h6" component="div" marginRight={2}>
-              <NavLink to={"/alias"} style={linksStyles}>
-                Alias
+              <NavLink to={"/alias"} style={linkStyles("alias")}>
+                The Game Alias
               </NavLink>
             </Typography>
             <Typography variant="h6" component="div" flexGrow={1}>
-              <NavLink to={"/todos"} style={linksStyles}>
+              <NavLink to={"/todos"} style={linkStyles("todos")}>
                 To do
               </NavLink>
             </Typography>

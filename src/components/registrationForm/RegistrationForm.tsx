@@ -77,7 +77,7 @@ const Login = () => {
     <Paper
       elevation={3}
       style={{
-        padding: "0 15px 10px 15px",
+        padding: "10px 15px",
         width: "min-content",
         marginLeft: "100px",
         marginTop: "40px",
@@ -141,6 +141,8 @@ const Login = () => {
           </>
         )}
       </Typography>
+      <hr />
+      <h4>Please fill some fake credentials for Sign in/Sign up cycle 😊</h4>
     </Paper>
   );
 };

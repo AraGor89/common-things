@@ -12,6 +12,7 @@ import {
   DoneAllOutlined as DoneAllOutlinedIcon,
   DeleteOutlined as DeleteOutlinedIcon,
   ClearAllOutlined as ClearAllOutlinedIcon,
+  InfoOutlined as InfoOutlinedIcon,
 } from "@mui/icons-material";
 
 import useToDo from "./toDoHook";
@@ -31,6 +32,7 @@ const Todo: FC = () => {
     setNewDoing,
     handleDelete,
     handleSelect,
+    handleKeyDown,
     setIsFiltered,
     isIncludeSearch,
     setSearchFilter,
@@ -39,6 +41,20 @@ const Todo: FC = () => {
 
   return (
     <Typography component="div" margin={4} minWidth="500px">
+      <Typography
+        component="div"
+        marginBottom={5}
+        sx={{ borderBottom: "2px dotted lightblue", display: "flex" }}
+      >
+        <InfoOutlinedIcon color="info" />
+        <Typography component="div">
+          This ToDo list supports the following features{" "}
+          <b>
+            create, delete, save, search, toggle done/undone, shows total items
+            count, shows done items count, <i>delete group, toggle group</i>
+          </b>
+        </Typography>
+      </Typography>
       <Typography
         component="div"
         sx={{
@@ -71,6 +87,7 @@ const Todo: FC = () => {
           value={newDoing}
           sx={{ flexGrow: "1", marginRight: "10px" }}
           onChange={(e) => setNewDoing(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <Button
           size="small"
