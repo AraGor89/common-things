@@ -42,6 +42,8 @@ const Header = () => {
             >
               <MenuIcon />
             </IconButton>
+            {/* TODO: uncomment when user page is ready */}
+
             {/* <Typography variant="h6" component="div" marginRight={2}>
               News
             </Typography>

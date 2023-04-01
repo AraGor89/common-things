@@ -3,9 +3,10 @@ import axios from "axios";
 import { sampleSize } from "lodash";
 import { IRowWordsState, IWordsState, ECommon } from "./types";
 
-const sheet_id = process.env.REACT_APP_GOOGLE_SHEETS_ID;
 const api_key = process.env.REACT_APP_GOOGLE_API_KEY;
-const URL = `https://sheets.googleapis.com/v4/spreadsheets/${sheet_id}/values:batchGet?ranges=Sheet1!A2:Z10000&key=${api_key}`;
+const sheet_id = process.env.REACT_APP_GOOGLE_SHEETS_ID;
+const sheets_base_url = process.env.REACT_APP_SHEETS_BASE_URL;
+const URL = `${sheets_base_url}${sheet_id}/values:batchGet?ranges=Sheet1!A2:Z10000&key=${api_key}`;
 
 const useAlias = () => {
   const [wordsFromSheet, setWordsFromSheet] = useState<IRowWordsState[] | []>(
@@ -125,7 +126,6 @@ const useAlias = () => {
   };
 
   const getWordsFromSheet = async () => {
-    // sheet link https://docs.google.com/spreadsheets/d/1D3zHrSbk8ZlJS7frCs_N-XEgMfuFyoiOGgTQYF43F1Y/edit#gid=0
     try {
       const res = await axios.get(URL);
       const wordsFromSheet = res?.data?.valueRanges[0]?.values;

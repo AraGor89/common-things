@@ -11,6 +11,8 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
+// NOTE: used 'HashRouter' because of github-pages
+
 root.render(
   <React.StrictMode>
     <HashRouter>
